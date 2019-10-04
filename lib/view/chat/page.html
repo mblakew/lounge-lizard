@@ -374,12 +374,36 @@
   .replies a {
     font-weight: 700;
   }
+
+  /*Added*/
+  #topBar {
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    background-color: white;
+    top: 0;
+    left: 0;
+    border-bottom: solid 1px black;
+
+    p {
+      width: 50%;
+    }
+
+  }
+
+  
+
 </style>
 <style type="text/css">
   {{{fontStyle}}}
 </style>
 </head>
 <body>
+
+<!-- topBar above messages -->
+<div id="topBar">
+  <p>{{channel}} #Lounge Lizard Navigation Bar  <a href="#" onclick="wey.viewPinned({{message.id}}); return false"><i class="icon-ellipsis"></i>View pinned Items</a></p>
+</div>
 
 <div id="messages">
 {{#each messages}}
