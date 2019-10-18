@@ -26,6 +26,7 @@
   }
 
   #messages {
+    margin-top: 35px; /* Room for nav bar */
     margin-bottom: 10px;
   }
 
@@ -390,7 +391,6 @@
       width: 50%;
       padding-left: 10px;
     }
-
   
 
 </style>
@@ -401,9 +401,11 @@
 <body>
 
 <!-- topBar above messages -->
+{{#isChannel messageList}}
 <div id="topBar">
   <p><span style="font-weight: bold">#{{messageList.name}}</span> <a href="#" onclick="wey.viewPinned({{message.id}}); return false"><i class="icon-ellipsis"></i>View pinned Items</a></p>
 </div>
+{{/isChannel}}
 
 <div id="messages">
 {{#each messages}}
