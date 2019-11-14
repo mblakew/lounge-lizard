@@ -115,5 +115,15 @@
         </div>
     </div>
     {{/each}}
-    <input class="inputBox" type="text">
+    <input class="inputBox" type="text" onkeyup="handleEnter(event, this, '{{thread.id}}')">
 </div>
+
+<script type="text/javascript" charset="utf-8">
+function handleEnter(e, element, threadId){
+    if(e.keyCode === 13){
+        //wey.log('enter detected');
+        wey.sendMessage(threadId, element.value);
+        element.value = '';
+    }
+}
+</script>
