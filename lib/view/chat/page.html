@@ -6,10 +6,8 @@
   {{!--Turndown: convert HTML to markdown --}}
   <script src="https://unpkg.com/turndown/dist/turndown.js"></script>
 
-  <!-- Main Quill Rich Text Editor library -->
+  {{!-- Quill Rich Text Editor --}}
   <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
-
-  <!-- Theme included stylesheets -->
   <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
 
   <style type="text/css">
@@ -37,16 +35,8 @@
       text-decoration: none;
     }
 
-    #editor {
-      height: 300px;
-    }
-
     a:hover {
       text-decoration: underline;
-    }
-
-    #messages {
-      margin-bottom: 10px;
     }
 
     .daymarker {
@@ -461,6 +451,44 @@
     .replies a {
       font-weight: 700;
     }
+
+    /*Added*/
+    #topBar {
+      position: fixed;
+      width: 100%;
+      height: 50px;
+      background-color: white;
+      top: 0;
+      left: 0;
+      border-bottom: solid 1px black;
+    }
+
+    #topBar p {
+      width: 50%;
+      padding-left: 10px;
+    }
+
+    #messages {
+      overflow-y: scroll;
+      position: fixed;
+      top: 50px;
+      max-height: 70vh;
+      width: 100%;
+      margin-top: 1px;
+      margin-bottom: 10px;
+      /* Room for nav bar */
+    }
+
+    .quill {
+      max-height: 50vh;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    #quill-container {
+      overflow: scroll;
+    }
   </style>
   <style type="text/css">
     {
@@ -471,40 +499,33 @@
       }
     }
   </style>
-  <style type="text/css">
-    #messages {
-      overflow: scroll;
-      position: fixed;
-      top: 0;
-      height: 80vh;
-      width: 100%;
-    }
-
-    .quill {
-      height: 20vh;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-    }
-
-    #quill-container {
-      overflow: scroll;
-    }
-  </style>
 </head>
 
 <body>
+  {{#isChannel messageList}}
+  <div id="topBar">
+    <p>
+      <span style="font-weight: bold">#{{messageList.name}}</span>
+      <a href="#" onclick="wey.viewPinned({{message.id}}); return false"><i class="icon-ellipsis"></i>View pinned
+        Items</a>
+    </p>
+  </div>
+  {{/isChannel}}
   <div id="messages">
     {{#each messages}} {{> messagePartial messageList=../messageList message=this}} {{/each}}
   </div>
   <div class="quill">
     <div id="toolbar-container"></div>
-    {{!-- <div id="scrolling-container"> --}}
+    {{!--
+      <div id="scrolling-container">
+        --}}
     <div id="quill-container">
       <p><br /></p>
     </div>
   </div>
-  {{!-- </div> --}}
+  {{!--
+    </div>
+    --}}
 
   <script type="text/javascript" charset="utf-8">
     // Which element is on top.
@@ -520,6 +541,7 @@
         msgs.scrollTo(0, msgs.scrollHeight)
       }
     }
+
     // For IE we need to scroll after ready, as the window body's size may be
     // incorrect before showing the browser.
     // For morden browsers scrolling before showing has the best visual effect.
@@ -639,12 +661,13 @@
       }
       topElement = null
       scrollOffset = 0
+      var messages = document.getElementsByClassName('msg')
+
       if (messages.scrollY + window.innerHeight >= messages.scrollHeight) {
         // Mark we want to be notified immediately when new message arrives.
         wey.notifyDisplaying()
         return
       }
-      var messages = document.getElementsByClassName('msg')
       if (messages.length === 0) return
       // Search backwards.
       for (var i = messages.length - 1; i >= 0; --i) {
@@ -657,10 +680,6 @@
       wey.notifyNotDisplaying()
     }
 
-    // Make sure the view is always scrolled at current message.
-    window.onresize = scrollToPreivousTopElement
-    // We are ready.
-
     // See comment above on IE.
     if (isIE) scrollToUnreadMarker()
     var toolbarOptions = [
@@ -669,38 +688,43 @@
       [{ list: 'ordered' }, { list: 'bullet' }]
     ]
     function handleenter(range) {
-      const codetexts = document.querySelectorAll("pre")
+      const codetexts = document.querySelectorAll('pre')
       const codetext = codetexts[codetexts.length - 1].innerHTML
       if (codetext) {
-        const newHTML = "<code>" + codetext + "</code>"
+        const newHTML = '<code>' + codetext + '</code>'
         codetexts[codetexts.length - 1].innerHTML = newHTML
       }
       const text = window.quill.root.innerHTML
       wey.onEnter(text)
       window.quill.setContents('')
-      var messagesDiv = document.getElementById("messages");
+      //var messagesDiv = document.getElementById("messages");
       //messagesDiv.scrollTop = messagesDiv.scrollHeight - messagesDiv.clientHeight;
     }
     window.quill = new Quill('#quill-container', {
       theme: 'snow',
       placeholder: 'Send message to channel...',
-      {{!-- bounds: '#scrolling-container', --}}
-      {{!-- scrollingContainer: '#scrolling-container', --}}
       modules: {
-      toolbar: toolbarOptions,
-      keyboard: {
-        bindings: {
-          enter: {
-            key: 13,
-            handler: (range, context) => {
-              handleenter(range)
-              return false
+        toolbar: toolbarOptions,
+        keyboard: {
+          bindings: {
+            enter: {
+              key: 13,
+              handler: (range, context) => {
+                handleenter(range)
+              }
             }
           }
         }
       }
-    }
     })
+    let quilldiv = document.getElementsByClassName('quill')
+    let messagesdiv = document.getElementById('messages')
+    let quilloffset = quilldiv[0].getBoundingClientRect().top - 51
+    messagesdiv.style.height = `${quilloffset}px`
+
+    // Make sure the view is always scrolled at current message.
+    window.onresize = scrollToPreivousTopElement
+    // We are ready.
     wey.ready()
   </script>
 </body>
