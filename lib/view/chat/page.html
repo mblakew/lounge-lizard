@@ -492,10 +492,6 @@
       overflow: hidden;
     }
 
-    #messages {
-      margin-bottom: 15px;
-    }
-
     #container {
       position: absolute;
       top: 51px;
@@ -560,6 +556,52 @@
       }
     }
 
+    //Quill Editor -- these options will appear in the toolbar and integrate nicely with Slack's API
+    let toolbarOptions = [
+      ['bold', 'italic', 'strike'], // toggled buttons
+      ['blockquote', 'code-block'],
+      [{ list: 'ordered' }, { list: 'bullet' }]
+    ]
+
+    //For Quill Editor, we must preprocess the message and send to wey
+    function handleenter(range) {
+      const codetexts = document.querySelectorAll('pre')
+      if (codetexts.length > 0) {
+        const codetext = codetexts ? codetexts[codetexts.length - 1].innerHTML : null
+        if (codetext) {
+          const newHTML = '<code>' + codetext + '</code>'
+          codetexts[codetexts.length - 1].innerHTML = newHTML
+        }
+      }
+      const text = window.quill.root.innerHTML
+      wey.onEnter(text)
+      window.quill.setContents('')
+    }
+
+    window.quill = new Quill('#quill-container', {
+      theme: 'snow',
+      placeholder: 'Send message to channel...',
+      modules: {
+        toolbar: toolbarOptions,
+        keyboard: {
+          bindings: {
+            enter: {
+              key: 13,
+              handler: (range, context) => {
+                handleenter(range)
+              }
+            }
+          }
+        }
+      }
+    })
+
+
+    let quilldiv = document.getElementsByClassName('quill')
+    let messagesdiv = document.getElementById('messages')
+    let quilloffset = quilldiv[0].getBoundingClientRect().top - 51
+    messagesdiv.style.height = `${quilloffset}px`
+
     // For IE we need to scroll after ready, as the window body's size may be
     // incorrect before showing the browser.
     // For morden browsers scrolling before showing has the best visual effect.
@@ -599,6 +641,8 @@
     }
     // External API to add a new message.
     var messages = document.getElementById('messages')
+    let msgcontainer = document.getElementById('messagescontainer')
+
     window.addMessage = function (html, firstUnread, fromCurrentUser) {
       if (firstUnread) {
         var marker = document.getElementById('unread-marker')
@@ -608,8 +652,9 @@
       for (var i = 0; i < children.length; i++) messages.appendChild(children[i])
       // Scroll to bottom when it is the first unread message or when the channel
       // is focused.
-      if (fromCurrentUser || ((firstUnread || document.hasFocus()) && !topElement))
-        messages.scrollTo(0, messages.scrollHeight)
+      if (fromCurrentUser || ((firstUnread || document.hasFocus()) && !topElement)) {
+        msgcontainer.scrollTo(0, msgcontainer.scrollHeight)
+      }
       // Load images.
       loadAllImages()
     }
@@ -627,7 +672,9 @@
     var ignoreNextScroll = false
     function scrollToPreivousTopElement() {
       ignoreNextScroll = true
-      if (topElement) window.scrollTo(0, topElement.getBoundingClientRect().top + window.pageYOffset - scrollOffset)
+      if (topElement) {
+        window.scrollTo(0, topElement.getBoundingClientRect().top + window.pageYOffset - scrollOffset)
+      }
       else window.scrollTo(0, document.body.scrollHeight)
     }
     // External API to modify message.
@@ -700,45 +747,8 @@
 
     // See comment above on IE.
     if (isIE) scrollToUnreadMarker()
-    var toolbarOptions = [
-      ['bold', 'italic', 'strike'], // toggled buttons
-      ['blockquote', 'code-block'],
-      [{ list: 'ordered' }, { list: 'bullet' }]
-    ]
-    function handleenter(range) {
-      const codetexts = document.querySelectorAll('pre')
-      const codetext = codetexts[codetexts.length - 1].innerHTML
-      if (codetext) {
-        const newHTML = '<code>' + codetext + '</code>'
-        codetexts[codetexts.length - 1].innerHTML = newHTML
-      }
-      const text = window.quill.root.innerHTML
-      wey.onEnter(text)
-      window.quill.setContents('')
-      //var messagesDiv = document.getElementById("messages");
-      //messagesDiv.scrollTop = messagesDiv.scrollHeight - messagesDiv.clientHeight;
-    }
-    window.quill = new Quill('#quill-container', {
-      theme: 'snow',
-      placeholder: 'Send message to channel...',
-      modules: {
-        toolbar: toolbarOptions,
-        keyboard: {
-          bindings: {
-            enter: {
-              key: 13,
-              handler: (range, context) => {
-                handleenter(range)
-              }
-            }
-          }
-        }
-      }
-    })
-    let quilldiv = document.getElementsByClassName('quill')
-    let messagesdiv = document.getElementById('messages')
-    let quilloffset = quilldiv[0].getBoundingClientRect().top - 51
-    messagesdiv.style.height = `${quilloffset}px`
+
+
 
     // Make sure the view is always scrolled at current message.
     window.onresize = scrollToPreivousTopElement
