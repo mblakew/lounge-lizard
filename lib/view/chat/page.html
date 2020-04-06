@@ -468,44 +468,26 @@
       padding-left: 10px;
     }
 
-    #messagescontainer {
-      flex: 1;
-      overflow: auto;
+    #messages {
+      overflow-y: scroll;
+      position: fixed;
+      top: 50px;
+      max-height: 70vh;
       width: 100%;
+      margin-top: 1px;
+      margin-bottom: 10px;
+      /* Room for nav bar */
     }
 
     .quill {
-      flex: 0;
       max-height: 50vh;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
     }
-
 
     #quill-container {
       overflow: scroll;
-    }
-
-    #flexcontainer {
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      min-height: 0;
-      overflow: hidden;
-    }
-
-    #messages {
-      margin-bottom: 15px;
-    }
-
-    #container {
-      position: absolute;
-      top: 51px;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: calc(100% - 51px);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
     }
   </style>
   <style type="text/css">
@@ -529,28 +511,28 @@
     </p>
   </div>
   {{/isChannel}}
-  <div id="container">
-    <div id="flexcontainer">
-      <div id='messagescontainer'>
-        <div id="messages">
-          {{#each messages}} {{> messagePartial messageList=../messageList message=this}} {{/each}}
-        </div>
-      </div>
-      <div class="quill">
-        <div id="toolbar-container"></div>
-        <div id="quill-container">
-          <p><br /></p>
-        </div>
-      </div>
+  <div id="messages">
+    {{#each messages}} {{> messagePartial messageList=../messageList message=this}} {{/each}}
+  </div>
+  <div class="quill">
+    <div id="toolbar-container"></div>
+    {{!--
+      <div id="scrolling-container">
+        --}}
+    <div id="quill-container">
+      <p><br /></p>
     </div>
   </div>
+  {{!--
+    </div>
+    --}}
 
   <script type="text/javascript" charset="utf-8">
     // Which element is on top.
     var topElement = null
     // Scroll to the unread marker, or bottom if not found.
     function scrollToUnreadMarker() {
-      let msgs = document.getElementById('messagescontainer')
+      let msgs = document.getElementById('messages')
       var marker = document.getElementById('unread-marker')
       if (marker) {
         var rect = marker.getBoundingClientRect()
