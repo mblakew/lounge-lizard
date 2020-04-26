@@ -26,7 +26,9 @@
     <div class="action-menu">
       {{~#canStartThread messageList message~}}
       <a href="#" onclick="wey.openThread('{{message.id}}'); return false" title="Start thread"><i class="icon-comment"></i></a>
-      {{~/canStartThread~}}<a class="toggle-star" href="#" onclick="wey.setMessageStar('{{message.id}}', {{message.timestamp}}, {{revert message.hasStar}}); return false" title="Star message"><i class="{{#if message.hasStar}}icon-star{{else}}icon-star-empty{{/if}}"></i></a>
+      {{~/canStartThread~}}
+
+      <a class="toggle-star" href="#" onclick="wey.setMessageStar('{{message.id}}', {{message.timestamp}}, {{revert message.hasStar}}); return false" title="Star message"><i class="{{#if message.hasStar}}icon-star{{else}}icon-star-empty{{/if}}"></i></a>
 
       <!--Pinning button-->
       <a href="#" onclick="wey.pinMessage('{{message.id}}', {{message.timestamp}}, {{revert message.isPinned}}); return false" title="Pin message"><i class="{{#if message.isPinned}}icon-smile{{else}}icon-ellipsis{{/if}}"></i></a>
@@ -37,7 +39,6 @@
       -->
 
 
-      {{~/canStartThread~}}
       <a href="#" class="react-picker" onclick="wey.openReactions('{{message.id}}', {{message.timestamp}}); return false"><i class="icon-smile" id="react-button-icon"></i></a>
       <a class="toggle-star" href="#" onclick="wey.setMessageStar('{{message.id}}', {{message.timestamp}}, {{revert message.hasStar}}); return false" title="Star message"><i class="{{#if message.hasStar}}icon-star{{else}}icon-star-empty{{/if}}"></i></a>
     </div>
