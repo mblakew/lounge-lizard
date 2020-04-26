@@ -1,0 +1,28 @@
+<div id="{{message.id}}-emoji-picker" class="emoji-picker">
+  {{#each message.emojiList.nativeEmoji}}
+  <div
+    class="pickable-emoji"
+    onclick="wey.setMessageReaction('{{../message.id}}', {{../message.timestamp}}, '{{this.name}}', true); return false"
+  >
+    <span
+      style="background-position: -{{this.x}}px -{{this.y}}px"
+      class="apple size-{{this.size}} emoji"
+    ></span>
+  </div>
+  {{/each}}
+
+  {{#each message.emojiList.customEmoji}}
+  <div
+    href="#"
+    class="pickable-emoji"
+    onclick="wey.setMessageReaction('{{../message.id}}', {{../message.timestamp}}, '{{@key}}', true); return false"
+  >
+    <span
+            class="emoji custom size-22"
+            style="background-image: url({{this}})">
+    </span>
+  </div>
+  {{/each}}
+</div>
+
+<script></script>
