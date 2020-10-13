@@ -31,7 +31,9 @@
       <a class="toggle-star" href="#" onclick="wey.setMessageStar('{{message.id}}', {{message.timestamp}}, {{revert message.hasStar}}); return false" title="Star message"><i class="{{#if message.hasStar}}icon-star{{else}}icon-star-empty{{/if}}"></i></a>
 
       <!--Pinning button-->
+      {{#if messageList.account.canPinMessages}}
       <a href="#" onclick="wey.pinMessage('{{message.id}}', {{message.timestamp}}, {{revert message.isPinned}}); return false" title="Pin message"><i class="{{#if message.isPinned}}icon-smile{{else}}icon-ellipsis{{/if}}"></i></a>
+      {{/if}}
 
       <!--Used to demonstrate pinned messages-->
       <!--
