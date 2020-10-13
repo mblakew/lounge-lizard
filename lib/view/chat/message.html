@@ -42,8 +42,9 @@
         <a href="#" onclick="wey.viewPinned('{{message.id}}'); return false" title="List pinned messages"><i class="icon-ellipsis"></i></a>
       -->
 
-
+      {{#if messageList.account.canReactToMessages}}
       <a href="#" class="react-picker" onclick="wey.openReactions('{{message.id}}', {{message.timestamp}}); return false"><i class="icon-smile" id="react-button-icon"></i></a>
+      {{/if}}
     </div>
     {{#unless message.isFolded}}
     <div class="sender">

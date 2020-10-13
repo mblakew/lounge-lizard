@@ -67,6 +67,12 @@ There are some cases where the Microsoft API is insufficient for the data we wan
 
 * **Message pinning** - Microsoft Teams does not have the concept of message pinning.
 
+* **Reacting to messages** - On the surface it would seem that the Microsoft Graph API supports reacting to messages.  The 
+chatMessage resource has a *reactions* property (https://docs.microsoft.com/en-us/graph/api/resources/chatmessage?view=graph-rest-beta) 
+and the API exposes a method for updating chat messages (https://docs.microsoft.com/en-us/graph/api/chatmessage-update?view=graph-rest-beta&tabs=http).  However, at this time the API only supports updating the _policyViolation_ property of a 
+chat message.  It seems like it would be possible to specify a reaction when sending a new chat message, but this is not the 
+normal use case for message reactions.
+
 * **Saving messages** - Also known as starring messages.  Microsoft Teams does support the concept of saving messages and 
 the Microsoft Teams desktop app lets users see a list of messages that they have saved.  However, the Microsoft Graph API 
 does not provide a means for a consumer to set the saved status of a message nor does it provide a way to retrieve a list
