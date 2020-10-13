@@ -58,3 +58,20 @@ Below is a JSON representation of the chatMessage return type. It appears to hav
 ## Extending the API
 
 There are some cases where the Microsoft API is insufficient for the data we want to display and manipulate like, for example, adding custom emojis for message reactions. Luckily, Microsoft boasts the ability to extend its APIs without having an external data store. More on that here: https://docs.microsoft.com/en-us/graph/extensibility-overview
+
+## Known Issues
+
+
+
+## Unsupported Functionaity
+
+* **Message pinning** - Microsoft Teams does not have the concept of message pinning.
+
+* **Saving messages** - Also known as starring messages.  Microsoft Teams does support the concept of saving messages and 
+the Microsoft Teams desktop app lets users see a list of messages that they have saved.  However, the Microsoft Graph API 
+does not provide a means for a consumer to set the saved status of a message nor does it provide a way to retrieve a list
+of saved messages.
+
+
+## Supported but Not Implemented Functionality
+
