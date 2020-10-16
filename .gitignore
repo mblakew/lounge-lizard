@@ -1,6 +1,7 @@
 *.swp
 *.zip
 secrets.json
+testdata.json
 
 package-lock.json
 npm-debug.log
