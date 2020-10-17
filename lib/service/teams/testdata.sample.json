@@ -4,7 +4,6 @@
     "channelId": "<id of any channel>",
     "chatUserId": "<id of some user to use for a direct message>",
     "chatUserName": "<name of user corresponding to chatUserId>",
-    "clientId": "<Application (client) ID for SampleApp in test organization>",
     "tenantId": "<Directory (tenant) ID for SampleApp in test organization>",
     "refreshToken": "<Refresh token obtained from Postman using Device Code auth flow>"
 }
