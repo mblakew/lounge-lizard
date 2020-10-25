@@ -1,7 +1,6 @@
 {
     "Instructions": "Before running the application, copy this file to testdata.json and update all values below.",
     "channelId": "<id of any channel>",
-    "refreshToken": "<Refresh token obtained from Postman using Device Code auth flow>",
     "chatId": "<Chat id used for generating mock received messages>",
     "mockMessageSenderId": "<User id used as sender when generating mock received messages>",
     "mockMessageSenderName": "<Name used for sender when generating mock received messages>"
