@@ -20,7 +20,7 @@ page on GitHub.
 For hackers, you can also `npm install -g wey`. (Currently only Node.js 10.x is
 supported for running from source code.)
 
-Because only Node.js 10.x is supportedfrom running from source code, it is necessary to use a Node.js 10.x version to continue development of Lounge Lizard. The development team used and recommends Node.js 10.9.0.
+Because only Node.js 10.x is supported when running the application from source code, it is necessary to use a Node.js 10.x version to continue development of Lounge Lizard. The development team used and recommends Node.js 10.9.0.
 
 ### Running application from source on Windows
 
