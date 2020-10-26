@@ -623,8 +623,11 @@
     <div id="topBar">
       <p>
         <span style="font-weight: bold">#{{messageList.name}}</span>
+
+        {{#if messageList.account.canPinMessages}}
         <a href="#" onclick="wey.viewPinned({{message.id}}); return false"><i class="icon-ellipsis"></i>View pinned
           Items</a>
+        {{/if}}
       </p>
     </div>
     {{/isChannel}}
