@@ -25,7 +25,7 @@ Because only Node.js 10.x is supportedfrom running from source code, it is neces
 ### Running application from source on Windows
 
 * Uninstall your current Node.js directory (usually located in C:\Program Files\nodejs), if one already exists.
-* Uninstall your npm directory (usually C:\Users\<User>\AppData\Roaming\npm), if one already exists.
+* Uninstall your npm directory (usually located in C:\Users\<User>\AppData\Roaming\npm), if one already exists.
 * Use a Node.js version manager. Node Version Manager for Windows is recommended. 
 * Go to https://github.com/coreybutler/nvm-windows/releases and download nvm-setup.zip
 * Unzip the file and run it.
