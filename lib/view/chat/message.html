@@ -107,7 +107,11 @@
     {{#if message.reactions}}
     <div class="reactions">
     {{#each message.reactions}}
+    {{#if messageList.account.canReactToMessages}}
     <button onclick="wey.setMessageReaction('{{../message.id}}', {{../message.timestamp}}, '{{name}}', {{revert reacted}}); return false" {{#if reacted}}class="reacted"{{/if}}>{{{content}}}<span class="count">{{count}}</span></button>
+    {{else}}
+    <span>{{{content}}}</span><span class="count">{{count}}</span>
+    {{/if}}
     {{/each}}
     </div>
     {{/if}}
