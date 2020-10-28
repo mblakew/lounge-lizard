@@ -14,12 +14,22 @@ This document lists various features of a chat application and indicates whether
 | Star channel    | :white_check_mark: | :x:                | :x:                | :x:                | :x:                |
 | Manage channel  | :white_check_mark: | :x:                | :white_check_mark: | :white_check_mark: | :x:                |
 | Delete channel  | :white_check_mark: | :x:                | :white_check_mark: | :white_check_mark: | :x:                |
+| Get users       | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Get messages    | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Send message    | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 
 
-## Direct Messages
+## Chats (also called Conversations or Direct Messages)
 
-| Feature         | Slack              | LL for Slack       | MS Teams           | Graph API          | LL for Teams       |
-| --------------- | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: |
+| Feature          | Slack              | LL for Slack       | MS Teams           | Graph API          | LL for Teams       |
+| ---------------- | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: |
+| Get chats        | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Get messages     | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Create chat      | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                | :x:                |
+| Close chat       | :white_check_mark: | :white_check_mark: | :x:                | :x:                | :x:                |
+| Leave chat       | :question:         | :x:                | :white_check_mark: | :question:         | :x:                |
+| Star chat        | :white_check_mark: | :x:                | :x:                | :x:                | :x:                |
+| Pin chat         | :x:                | :x:                | :white_check_mark: | :question:         | :x:                |
 
 
 ## Threads
@@ -32,3 +42,14 @@ This document lists various features of a chat application and indicates whether
 
 | Feature         | Slack              | LL for Slack       | MS Teams           | Graph API          | LL for Teams       |
 | --------------- | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: |
+
+
+
+
+
+### Notes
+1. In MS Teams and the Graph API users are actually defined at the team level and not the channel level, but the application 
+allows a user to see the user list at the channel level.
+2. The distinction between starring a chat and pinning a chat is that starring a chat causes it to be marked as a favorite 
+and thus displayed in a special section of the UI along with other starred items.  Pinning a chat just causes it to be displayed in 
+a special subsection at the top of the list of all chats.
