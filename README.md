@@ -20,6 +20,21 @@ page on GitHub.
 For hackers, you can also `npm install -g wey`. (Currently only Node.js 10.x is
 supported for running from source code.)
 
+Because only Node.js 10.x is supported when running the application from source code, it is necessary to use a Node.js 10.x version to continue development of Lounge Lizard. The development team used and recommends Node.js 10.9.0.
+
+### Running application from source on Windows
+
+* Delete your current Node.js directory (usually located in C:\Program Files\nodejs), if one already exists.
+* Delete your current npm directory (usually located in C:\Users\<User>\AppData\Roaming\npm), if one already exists.
+* Use a Node.js version manager. Node Version Manager for Windows is recommended. 
+* Go to https://github.com/coreybutler/nvm-windows/releases and download nvm-setup.zip
+* Unzip the file and run it.
+* Open Windows PowerShell with administrative privileges.
+* Run "nvm install 10.9.0"
+* Run "nvm use 10.9.0"
+* Now, in a terminal, go to the local repository and run "npm install" and "npm run-script build"
+* Finally, to run the executable application, run "npm run start"
+
 ## Technical stack
 
 * [Yue](https://github.com/yue/yue) - Cross-platform native UI library
