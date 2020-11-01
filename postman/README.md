@@ -38,4 +38,4 @@ The access token obtained above is valid for one hour.  To obtain a new access t
 * **Microsoft Graph.postman_collection.json:** https://github.com/microsoftgraph/microsoftgraph-postman-collections/blob/master/Microsoft%20Graph.postman_collection.json
 * **Microsoft Graph.postman_environment.json:** https://github.com/microsoftgraph/microsoftgraph-postman-collections/blob/master/Microsoft%20Graph.postman_environment.json
 
-**Important Note:** Some modifications have been made from the original source to simplify the use of these collections and better reflect Lounge Lizard's application flow.  The MS Graph API postman collections are copyrighted and licensed under the MIT license which can be found in the LICENSE file in this folder.
+**Important Note:** Some modifications have been made from the original source to simplify the use of these collections, better reflect Lounge Lizard's application flow, and add functionality used by Lounge Lizard but missing from the original Postman collections.  The MS Graph API postman collections are copyrighted and licensed under the MIT license which can be found in the LICENSE file in this folder.
