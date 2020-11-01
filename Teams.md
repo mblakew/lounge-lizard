@@ -81,3 +81,9 @@ of saved messages.
 
 ## Supported but Not Implemented Functionality
 
+
+
+
+## Using the Postman collections
+
+See the **postman** folder for Postman collections and instructions for using them to interact with the Microsoft Graph API.
