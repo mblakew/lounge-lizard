@@ -3,6 +3,9 @@
 Fast open source Slack desktop app, written in Node.js with native UI powered
 by [the Yue library](https://github.com/yue/yue).
 
+Note that this project is not actively maintained, you may want to use the
+fork [lounge-lizard](https://github.com/cacticouncil/lounge-lizard/) instead.
+
 __Do not use this for work, you might miss important messages due to bugs and
 missing features.__
 
@@ -16,9 +19,6 @@ missing features.__
 
 To find latest releases for different platforms, go to the [Releases][releases]
 page on GitHub.
-
-For hackers, you can also `npm install -g wey`. (Currently only Node.js 10.x is
-supported for running from source code.)
 
 Because only Node.js 10.x is supported when running the application from source code, it is necessary to use a Node.js 10.x version to continue development of Lounge Lizard. The development team used and recommends Node.js 10.9.0.
 

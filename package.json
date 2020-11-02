@@ -1,6 +1,6 @@
 {
   "name": "wey",
-  "version": "0.3.5",
+  "version": "0.3.7",
   "main": "lib/main.js",
   "description": "Fast open source Slack desktop app",
   "build": {
@@ -9,18 +9,10 @@
     "copyright": "Copyright © 2018 Cheng Zhao",
     "unpack": "+(*.node|*.html|*.png|*.gif)"
   },
-  "bin": {
-    "wey": "./scripts/start.js"
-  },
   "scripts": {
-    "start": "node scripts/start.js",
-    "install": "fetch-yode",
-    "build": "yackage build out --cache-dir yode",
-    "dist": "yackage dist out --cache-dir yode"
-  },
-  "engines": {
-    "node": "^10",
-    "yode": "0.4.2"
+    "start": "yode .",
+    "build": "yackage build out",
+    "dist": "yackage dist out"
   },
   "license": "GPL-3.0",
   "homepage": "https://github.com/yue/wey",
@@ -32,26 +24,26 @@
     "url": "https://github.com/yue/wey/issues"
   },
   "dependencies": {
-    "@slack/client": "4.8.0",
-    "axios": "^0.19.2",
+    "@slack/rtm-api": "5.0.3",
+    "@slack/web-api": "5.8.0",
+    "axios": "0.20.0",
     "binary-search-bounds": "2.0.4",
-    "download-yue": "2.x",
-    "fetch-yode": "0.2.0",
-    "fs-extra": "5.0.0",
-    "gui": "0.6.3",
+    "fetch-yode": "1.0.x",
+    "fs-extra": "9.0.1",
+    "gui": "0.8.3-2",
     "html-to-mrkdwn": "^3.0.0",
-    "keytar": "4.3.0",
+    "keytar": "5.4.0",
     "mini-signals": "1.1.1",
     "node-notifier": "^6.0.0",
     "opn": "5.3.0",
     "qs": "^6.9.4",
     "readable-size": "0.2.0",
     "request": "^2.88.0",
-    "sanitize-html": "1.20.0",
+    "sanitize-html": "1.22.1",
     "slackify-markdown": "^2.1.0",
     "string-replace-async": "1.2.1"
   },
   "devDependencies": {
-    "yackage": "0.2.10"
+    "yackage": "0.3.x"
   }
 }
