@@ -7,9 +7,9 @@ This document lists various features of a chat application and indicates whether
 
 | Feature          | Slack              | LL for Slack       | MS Teams           | Graph API          | LL for Teams       |
 | ---------------- | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: |
-| Get team icon    |
-| Get user photo   |
-| Add custom emoji | :white_check_mark: | 
+| Get team icon    | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                |
+| Get user photo   | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                |
+| Add custom emoji | :white_check_mark: | :x:                | :x:                | :x:                | :x:                |
 
 ## Channels
 
@@ -74,9 +74,9 @@ This document lists various features of a chat application and indicates whether
 | --------------------------- | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: |
 | Attach file to message      | :white_check_mark: | :x:                | :white_check_mark: | :white_check_mark: | :x:                |
 | Add code snippet to message | :question:         | :x:                | :white_check_mark: | :white_check_mark: | :x:                |
-| Add emoji to message        | :white_check_mark: | :white_check_mark: | :white_check_mark: | 
-| Add @mention to message     | :white_check_mark: | 
-| Add inline image to message | :question:         |
+| Add emoji to message        | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                |
+| Add @mention to message     | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                |
+| Add inline image to message | :x:                | :x:                | :white_check_mark: | :question:         | :x:                |
 
 
 
@@ -86,3 +86,9 @@ allows a user to see the user list at the channel level.
 2. The distinction between starring a chat and pinning a chat is that starring a chat causes it to be marked as a favorite 
 and thus displayed in a special section of the UI along with other starred items.  Pinning a chat just causes it to be displayed in 
 a special subsection at the top of the list of all chats.
+3. Findings to date indicate that it is possible to send emoji with a MS Teams message but that to do so the message must be 
+formatted as html and the emoji must be specified by an <img> tag that references the corresponding image file on Microsoft's 
+CDN.
+4. In both Slack and MS Teams, including a mention in a message involves specially-formatted content in the body of the message itself. 
+However, with MS Teams there is also an additional "mentions" block that must be included in the JSON for the outgoing message that
+is sent to the MS Graph API.
