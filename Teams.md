@@ -61,6 +61,10 @@ There are some cases where the Microsoft API is insufficient for the data we wan
 
 Unfortunately, chatMessage is not one of the resources for which custom extensions are currently supported.
 
+## Using the Postman collections
+
+See the **postman** folder for Postman collections and instructions for using them to interact with the Microsoft Graph API.
+
 ## Known Issues
 
 
@@ -137,8 +141,3 @@ obtain a Skype token but the exact mechanism for doing this has not been identif
 4. There is a possibility of breaking changes in the API at any time.  Because it is not a documented public API such changes would probably not be publicized.  However, if the MS Teams desktop application relies on the same back-end APIs as the web application the possibility of breaking changes should be minimal.
 5. There may be other related API calls that must also be made to set or get important information.  For example, browser developer tools show regular calls made to API methods called **getpresence** and **reportmyactivity**.  Presumably, these methods are used to report the current user's status (i.e. available, busy, away, etc.) and get the status of other users.
 
-
-
-## Using the Postman collections
-
-See the **postman** folder for Postman collections and instructions for using them to interact with the Microsoft Graph API.
