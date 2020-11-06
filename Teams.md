@@ -129,17 +129,10 @@ can be obtained from the Graph API).  However, there are values prepended to the
 another GUID included in the URL whose meaning is not known.  At example of the API's URL is https://northcentralus.notifications.teams.microsoft.com/users/8:orgid:aa9e52f6-3e46-49b7-b742-c1baa008154c/endpoints/77a1061d-a476-441b-9e82-46cc8f18c90e/events/poll.
 2. Authentication for the polling API is based on a Skype token and not on the access token that is used with the Microsoft Graph API.  
 It seems that the Teams web application may use a normal access token for some other API calls and it may use that access token to 
-obtain a Skype token but the exact mechanism for doing this has not been identified.  
-
-
-https://stackoverflow.com/questions/59055629/how-to-generate-a-skyetoken-for-teams-native-apis
-https://github.com/sanderdewit/teams-module/blob/master/teams_v2.psm1
-https://github.com/msndevs/protocol-docs/wiki/Authentication
-
-
-
-
- auth
- response format
- possibility of changes
- there may be other related API calls that must also be made to get important information
+obtain a Skype token but the exact mechanism for doing this has not been identified. Some resources with potentially useful information can be found at:
+   - https://stackoverflow.com/questions/59055629/how-to-generate-a-skyetoken-for-teams-native-apis
+   - https://github.com/sanderdewit/teams-module/blob/master/teams_v2.psm1
+   - https://github.com/msndevs/protocol-docs/wiki/Authentication
+3. The format of the API responses is not documented and does not appear to be the same as responses from MS Graph API methods that return chat messages.
+4. There is a possibility of breaking changes in the API at any time.  Because it is not a documented public API such changes would probably not be publicized.  However, if the MS Teams desktop application relies on the same back-end APIs as the web application the possibility of breaking changes should be minimal.
+5. There may be other related API calls that must also be made to set or get important information.  For example, browser developer tools show regular calls made to API methods called **getpresence** and **reportmyactivity**.  Presumably, these methods are used to report the current user's status (i.e. available, busy, away, etc.) and get the status of other users.

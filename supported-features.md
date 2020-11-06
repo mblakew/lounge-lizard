@@ -5,11 +5,13 @@ This document lists various features of a chat application and indicates whether
 
 ## General Functionality ##
 
-| Feature          | Slack              | LL for Slack       | MS Teams           | Graph API          | LL for Teams       |
-| ---------------- | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: |
-| Get team icon    | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                |
-| Get user photo   | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                |
-| Add custom emoji | :white_check_mark: | :x:                | :x:                | :x:                | :x:                |
+| Feature                  | Slack              | LL for Slack       | MS Teams           | Graph API          | LL for Teams       |
+| ------------------------ | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: |
+| Get team icon            | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                |
+| Get user photo           | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                |
+| Add custom emoji         | :white_check_mark: | :x:                | :x:                | :x:                | :x:                |
+| Set my status            | :white_check_mark: | :question:         | :white_check_mark: | :x:                | :x:                |
+| Get other users' status  | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                | :x:                |
 
 ## Channels
 
