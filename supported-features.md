@@ -11,7 +11,7 @@ This document lists various features of a chat application and indicates whether
 | Get user photo           | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                |
 | Add custom emoji         | :white_check_mark: | :x:                | :x:                | :x:                | :x:                |
 | Set my status            | :white_check_mark: | :question:         | :white_check_mark: | :x:                | :x:                |
-| Get other users' status  | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                | :x:                |
+| Get other users' status  | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                |
 
 ## Channels
 

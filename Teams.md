@@ -115,6 +115,9 @@ for an account is essentially the same as the image that is returned from the Gr
 
 * **User avatars:** See **Team icon** above.  An example of a URL for the 120x120 photo for a user is https://graph.microsoft.com/v1.0/users/{{UserId}}/photos/120x120/$value.
 
+* **Getting presence/status of other users:** There is support for getting another user's presence/status via the Graph API but 
+Lounge Lizard particularly needs to be able to receive updates (a mechanism for receiving updates has not yet been identified; see more below).  See https://docs.microsoft.com/en-us/graph/api/presence-get?view=graph-rest-beta&tabs=http for more information.
+
 ## Receiving new messages in the MS Teams web application
 
 The Microsoft Teams web and desktop applications have the same need to detect updates including the arrival of new messages as does 
@@ -139,5 +142,5 @@ obtain a Skype token but the exact mechanism for doing this has not been identif
    - https://github.com/msndevs/protocol-docs/wiki/Authentication
 3. The format of the API responses is not documented and does not appear to be the same as responses from MS Graph API methods that return chat messages.
 4. There is a possibility of breaking changes in the API at any time.  Because it is not a documented public API such changes would probably not be publicized.  However, if the MS Teams desktop application relies on the same back-end APIs as the web application the possibility of breaking changes should be minimal.
-5. There may be other related API calls that must also be made to set or get important information.  For example, browser developer tools show regular calls made to API methods called **getpresence** and **reportmyactivity**.  Presumably, these methods are used to report the current user's status (i.e. available, busy, away, etc.) and get the status of other users.
+5. There may be other related API calls that must also be made to set or get important information.  For example, browser developer tools show regular calls made to API methods called **getpresence** and **reportmyactivity**.  Presumably, these methods are used to report the current user's status (i.e. available, busy, away, etc.) and get the status of other users.  See the SlackAccount class for a complete list of events for which the Slack client can received updates from the server.
 
