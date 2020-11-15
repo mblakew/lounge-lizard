@@ -106,6 +106,19 @@ snippet is just an unnamed file that is downloaded by Lounge Lizard the same as 
 With Teams and the Graph API, a code snippet is also included in a message's attachments collection but it is a link to 
 another API call that must be made to retrieve the contents.
 
+* **Formatting in messages:** MS Teams and the Graph API support formatting in messages using html.  Currently, Loung Lizard uses a 
+rich text editor to compose messages but converts formatting into markdown when sending.  The application needs to be updated to 
+convert the markdown to html.  This may be relatively straightforward as the underlying issue appears to be that when the rich text 
+editor was implemented, the UI code was made responsible for converting the editor's html to markdown and this conversion simply needs
+to be pushed down to a Slack-specific class.
+
+* **Mentions:** The mechanism employed by MS Teams and the Graph API for sending mentions in a message is considerably more complex 
+than the mechanism employed by Slack.  In Slack, mentions are sent as specially-formatted text embedded in the message itself.  In 
+MS Teams, on the other hand, there are two components to sending mentions.  The first is a special html-like tag in the message body.  
+The second component is an object that is added to the message's mentions collection which contains information about the person, 
+team, or channel being mentioned.  The best way to see how the message must be formatted is to send one or more messages using the 
+MS Teams web or desktop app, use Postman to invoke the Graph API to get the message that was sent, and inspect the response.
+
 * **Team icon:** It is possible to get use the Graph API to get a photo/icon for a team but Microsoft's model for doing this is 
 quite different than Slack's model.  With Slack, the team's icon is openly available via unauthenticated http GET.  As a result, 
 the Lounge Lizard code that retrieves the icon is embedded in the UI code and is unaware of the chat service classes.  With the 
