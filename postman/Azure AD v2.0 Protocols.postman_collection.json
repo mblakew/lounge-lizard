@@ -233,7 +233,7 @@
 							]
 						},
 						"url": {
-							"raw": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+							"raw": "https://login.microsoftonline.com/organizations/oauth2/v2.0/token",
 							"protocol": "https",
 							"host": [
 								"login",
@@ -241,7 +241,7 @@
 								"com"
 							],
 							"path": [
-								"common",
+								"organizations",
 								"oauth2",
 								"v2.0",
 								"token"
