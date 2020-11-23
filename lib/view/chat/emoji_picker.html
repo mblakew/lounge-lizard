@@ -2,7 +2,7 @@
   {{#each message.emojiList.nativeEmoji}}
   <div
     class="pickable-emoji"
-    onclick="wey.setMessageReaction('{{../message.id}}', {{../message.timestamp}}, '{{this.name}}', true); return false"
+    onclick="ll.setMessageReaction('{{../message.id}}', {{../message.timestamp}}, '{{this.name}}', true); return false"
   >
     <span
       style="background-position: -{{this.x}}px -{{this.y}}px"
@@ -15,7 +15,7 @@
   <div
     href="#"
     class="pickable-emoji"
-    onclick="wey.setMessageReaction('{{../message.id}}', {{../message.timestamp}}, '{{@key}}', true); return false"
+    onclick="ll.setMessageReaction('{{../message.id}}', {{../message.timestamp}}, '{{@key}}', true); return false"
   >
     <span
             class="emoji custom size-22"

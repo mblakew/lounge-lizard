@@ -1,23 +1,26 @@
-# Wey
+# Lounge Lizard
 
-Fast open source Slack desktop app, written in Node.js with native UI powered
+Fast open source desktop chat application, written in Node.js with native UI powered
 by [the Yue library](https://github.com/yue/yue).
+
+**Important Note:** Lounge Lizard is based on Wey (https://github.com/yue/wey) and has been modified 
+from the original source (2019 - 2020).
 
 __Do not use this for work, you might miss important messages due to bugs and
 missing features.__
 
 ## Screenshots
 
-|  macOS            |    Linux          |  Windows          |
-| ----------------- | ----------------- | ----------------- |
-| ![][mac-screen]   | ![][linux-screen] | ![][win-screen]   |
+|  macOS                                   |  Linux                                     |  Windows                                       |
+| ---------------------------------------- | ------------------------------------------ | ---------------------------------------------- |
+| ![macOS screenshot](docs/mac-screen.png) | ![Linux screenshot][docs/linux-screen.png] | ![Windows screenshot][docs/windows-screen.png] |
 
 ## Releases
 
 To find latest releases for different platforms, go to the [Releases][releases]
 page on GitHub.
 
-For hackers, you can also `npm install -g wey`. (Currently only Node.js 10.x is
+For hackers, you can also `npm install -g lounge-lizard`. (Currently only Node.js 10.x is
 supported for running from source code.)
 
 Because only Node.js 10.x is supported when running the application from source code, it is necessary to use a Node.js 10.x version to continue development of Lounge Lizard. The development team used and recommends Node.js 10.9.0.
@@ -44,7 +47,7 @@ Because only Node.js 10.x is supported when running the application from source 
 
 ## Resources usage
 
-Resources used by Wey are based on following things:
+Resources used by Lounge Lizard are based on following things:
 
 * The Node.js runtime.
 * Native windows and widgets.
@@ -52,18 +55,18 @@ Resources used by Wey are based on following things:
 * JavaScript code for communicating with Slack.
 * Cached Users and messages information in teams.
 
-Normally for multiple teams with heavy traffics, Wey should not have any
+Normally for multiple teams with heavy traffics, Lounge Lizard should not have any
 significant CPU usage, and RAM usage is usually under 100MB. However if you
 have a team with more than 10k users in it, the memory usage may increase a lot.
 
 ## Design principles
 
-Wey is developed with following principles, the ultimate goal is to provide a
+Lounge Lizard is developed with following principles, the ultimate goal is to provide a
 fast and powerful chat app.
 
 ### Use native UI for almost everything
 
-Most parts of Wey should be created with native UI widgets from Yue library,
+Most parts of Lounge Lizard should be created with native UI widgets from Yue library,
 when there is need for custom UI, draw it manually.
 
 ### HTML is our friend
@@ -71,7 +74,7 @@ when there is need for custom UI, draw it manually.
 Webview is a great tool as long as we use it wisely. For rendering the rich
 messages of Slack, HTML is the best tool.
 
-The HTML pages showed in Wey should be static for best performance, the usage
+The HTML pages showed in Lounge Lizard should be static for best performance, the usage
 of JavaScript in the pages must be minimal. We should not use any external CSS
 or JavaScript library/framework, every style and animation must be hand written.
 
@@ -82,8 +85,8 @@ and without tons of dependencies.
 
 ### Hide details of chat service providers
 
-While Wey currently only supports Slack, it is on roadmap to add support for
-more services, and in future we will support plugins to add arbitrary services.
+Lounge Lizard currently supports Slack and Microsoft Teams.  In the future, it could
+support more services or could support plugins to add arbitrary services.
 
 To achieve this we must ensure the views and controllers must only operate on
 the public interfaces of models, all internal implementations must be hidden
@@ -91,17 +94,17 @@ from outside.
 
 ### Separated views
 
-Wey supports multiple windows with different types for reading messages, so the
+Lounge Lizard supports multiple windows with different types for reading messages, so the
 views should act only as users of models, and should not manage the models.
 
-As benefit creating views in Wey is very fast, opening a new window is almost
-as fast as showing a hidden window. Users can close all windows and run Wey in
+As benefit creating views in Lounge Lizard is very fast, opening a new window is almost
+as fast as showing a hidden window. Users can close all windows and run Lounge Lizard in
 background, while still be able to open a new window quickly.
 
 ### Correctly unload things
 
 While JavaScript has garbage collections, it is still very easy to cause memory
-leaks when careless referencing objects together. Views in Wey are reloaded
+leaks when careless referencing objects together. Views in Lounge Lizard are reloaded
 frequently (for example switching accounts and closing windows), so it is
 important to ensure everything event subscription is detached when unloading
 a view.
@@ -117,7 +120,7 @@ on this project, as long as you follow the GPLv3 license.
 
 ## Performance bottleneck
 
-In Wey most time are spent on networking, especially on startup when fetching
+In Lounge Lizard most time are spent on networking, especially on startup when fetching
 channels information from Slack, and performance is usually limited by
 Slack's APIs.
 
@@ -160,8 +163,4 @@ I have met some quirks when using Slack APIs, any help would be appreciated.
 The main source code under `lib/` are published under GPLv3, other things are
 published under public domain.
 
-[releases]: https://github.com/yue/wey/releases
-[token]: https://api.slack.com/custom-integrations/legacy-tokens
-[mac-screen]: https://user-images.githubusercontent.com/639601/38463114-178afd9e-3b2e-11e8-9650-09b5d981523b.png
-[linux-screen]: https://user-images.githubusercontent.com/639601/38463115-17b8c7e2-3b2e-11e8-8f75-5a76f87686f3.png
-[win-screen]: https://user-images.githubusercontent.com/639601/38463105-97644cc4-3b2d-11e8-97a1-6cdb451ae3a8.png
+[releases]: https://github.com/cacticouncil/lounge-lizard/releases

@@ -625,7 +625,7 @@
         <span style="font-weight: bold">#{{messageList.name}}</span>
 
         {{#if messageList.account.canPinMessages}}
-        <a href="#" onclick="wey.viewPinned({{message.id}}); return false"><i class="icon-ellipsis"></i>View pinned
+        <a href="#" onclick="ll.viewPinned({{message.id}}); return false"><i class="icon-ellipsis"></i>View pinned
           Items</a>
         {{/if}}
       </p>
@@ -676,7 +676,7 @@
         }
       }
       const text = window.quill.root.innerHTML;
-      wey.onEnter(text);
+      ll.onEnter(text);
       window.quill.setContents([{ insert: '\n' }]);   // Also ends up with three blank lines
     }
 
@@ -719,7 +719,7 @@
         callbacks[++nextCallbackId] = function(result) {
           element.src = result;
         };
-        wey.fetch(url, nextCallbackId);
+        ll.fetch(url, nextCallbackId);
       }
       // Load all images.
       function loadAllImages() {
@@ -812,7 +812,7 @@
       window.onclick = function(event) {
         var target = findParent("a", event.target);
         if (target && target.href !== "#" && !target.onclick) {
-          wey.openLink(target.href);
+          ll.openLink(target.href);
           return false;
         }
       };
@@ -820,7 +820,7 @@
       window.oncontextmenu = function(event) {
         var target = findParent("a", event.target);
         if (target && target.href !== "#" && !target.oncontextmenu) {
-          wey.openLinkContextMenu(target.href);
+          ll.openLinkContextMenu(target.href);
           return false;
         }
       };
@@ -834,7 +834,7 @@
         scrollOffset = 0;
         if (window.scrollY + window.innerHeight >= document.body.scrollHeight) {
           // Mark we want to be notified immediately when new message arrives.
-          wey.notifyDisplaying();
+          ll.notifyDisplaying();
           return;
         }
         var messages = document.getElementsByClassName("msg");
@@ -847,12 +847,12 @@
           scrollOffset = rect.top;
         }
         // When navigating old messages, treat the page as unfocused.
-        wey.notifyNotDisplaying();
+        ll.notifyNotDisplaying();
       };
       // Make sure the view is always scrolled at current message.
       window.onresize = scrollToPreivousTopElement;
       // We are ready.
-      wey.ready();
+      ll.ready();
       // See comment above on IE.
       if (isIE) scrollToUnreadMarker();
 
@@ -862,7 +862,7 @@
           event.target.className !== "react-picker" &&
           event.target.id !== "react-button-icon"
         ) {
-          wey.closeReactions();
+          ll.closeReactions();
         }
       });
     </script>
