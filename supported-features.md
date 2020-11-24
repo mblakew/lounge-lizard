@@ -5,42 +5,46 @@ This document lists various features of a chat application and indicates whether
 
 ## General Functionality ##
 
-| Feature                  | Slack              | LL for Slack       | MS Teams           | Graph API          | LL for Teams       |
-| ------------------------ | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: |
-| Get team icon            | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                |
-| Get user photo           | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                |
-| Add custom emoji         | :white_check_mark: | :x:                | :x:                | :x:                | :x:                |
-| Set my status            | :white_check_mark: | :question:         | :white_check_mark: | :x:                | :x:                |
-| Get other users' status  | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                | :x:                |
+| Feature                         | Slack              | LL for Slack       | MS Teams           | Graph API          | LL for Teams       |
+| ------------------------------- | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: |
+| Get team icon                   | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                |
+| Get user photo                  | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                |
+| Add custom emoji                | :white_check_mark: | :x:                | :x:                | :x:                | :x:                |
+| Set my status                   | :white_check_mark: | :question:         | :white_check_mark: | :x:                | :x:                |
+| Get other users' status         | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                |
+| Set my status message           | :white_check_mark: | :x:                | :white_check_mark: | :question:         | :x:                |
+| Get other users' status message | :white_check_mark: | :question:         | :white_check_mark: | :question:         | :x:                |
 
 ## Channels
 
-| Feature         | Slack              | LL for Slack       | MS Teams           | Graph API          | LL for Teams       |
-| --------------- | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: |
-| Get channels    | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| Join channel    | :white_check_mark: | :white_check_mark: | :x:                | :x:                | :x:                |
-| Leave channel   | :white_check_mark: | :white_check_mark: | :x:                | :x:                | :x:                |
-| Create channel  | :white_check_mark: | :x:                | :white_check_mark: | :white_check_mark: | :x:                |
-| Star channel    | :white_check_mark: | :x:                | :x:                | :x:                | :x:                |
-| Manage channel  | :white_check_mark: | :x:                | :white_check_mark: | :white_check_mark: | :x:                |
-| Delete channel  | :white_check_mark: | :x:                | :white_check_mark: | :white_check_mark: | :x:                |
-| Get users       | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| Get messages    | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| Send message    | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Feature               | Slack              | LL for Slack       | MS Teams           | Graph API          | LL for Teams       |
+| --------------------- | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: |
+| Get channels          | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Join channel          | :white_check_mark: | :white_check_mark: | :x:                | :x:                | :x:                |
+| Leave channel         | :white_check_mark: | :white_check_mark: | :x:                | :x:                | :x:                |
+| Create channel        | :white_check_mark: | :x:                | :white_check_mark: | :white_check_mark: | :x:                |
+| Star channel          | :white_check_mark: | :x:                | :x:                | :x:                | :x:                |
+| Manage channel        | :white_check_mark: | :x:                | :white_check_mark: | :white_check_mark: | :x:                |
+| Delete channel        | :white_check_mark: | :x:                | :white_check_mark: | :white_check_mark: | :x:                |
+| Get users             | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Get messages          | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Send message          | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Set last read message | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                | :x:                |
 
 
 ## Chats (also called Conversations or Direct Messages)
 
-| Feature          | Slack              | LL for Slack       | MS Teams           | Graph API          | LL for Teams       |
-| ---------------- | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: |
-| Get chats        | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| Create chat      | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                | :x:                |
-| Close chat       | :white_check_mark: | :white_check_mark: | :x:                | :x:                | :x:                |
-| Leave chat       | :question:         | :x:                | :white_check_mark: | :question:         | :x:                |
-| Star chat        | :white_check_mark: | :x:                | :x:                | :x:                | :x:                |
-| Pin chat         | :x:                | :x:                | :white_check_mark: | :question:         | :x:                |
-| Get messages     | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| Send message     | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Feature               | Slack              | LL for Slack       | MS Teams           | Graph API          | LL for Teams       |
+| --------------------- | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: |
+| Get chats             | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Create chat           | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                | :x:                |
+| Close chat            | :white_check_mark: | :white_check_mark: | :x:                | :x:                | :x:                |
+| Leave chat            | :question:         | :x:                | :white_check_mark: | :question:         | :x:                |
+| Star chat             | :white_check_mark: | :x:                | :x:                | :x:                | :x:                |
+| Pin chat              | :x:                | :x:                | :white_check_mark: | :question:         | :x:                |
+| Get messages          | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Send message          | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Set last read message | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                | :x:                |
 
 ## Threads
 
