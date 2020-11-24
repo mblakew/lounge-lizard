@@ -67,9 +67,9 @@ See the **postman** folder for Postman collections and instructions for using th
 
 ## Known Issues
 
+See the file **known-issues.md** for more information.
 
-
-## Unsupported Functionaity
+## Unsupported Functionality
 
 * **Message attachments:** Microsoft Teams supports message attachments.  However, the Teams concept of attachments is most 
 similar to Slack's files.  Teams does not have any functionality that resembles Slack's attachments functionality.  It is 
