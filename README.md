@@ -9,6 +9,17 @@ from the original source (2019 - 2020).
 __Do not use this for work, you might miss important messages due to bugs and
 missing features.__
 
+## Guide to additional documentation
+
+* **[Known Issues](known-issues.md):** Documents known issues that must or should be addressed as part of any future work on Lounge Lizard. 
+Some of the listed issues are bugs that have been identified while others are tasks that will need to be completed.
+
+* **[Supported Features](supported-features.md):** Lists various features of a chat application and whether each is supported by this 
+application and the chat services it supports.
+
+* **[Teams](Teams.md):** Contains important information about Microsoft Teams, the Microsoft Graph API which this application uses to interact
+with Microsoft Teams, and this application's support for Microsoft Teams.
+
 ## Screenshots
 
 |  macOS                                   |  Linux                                     |  Windows                                       |
