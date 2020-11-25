@@ -21,6 +21,19 @@ project and be used for task tracking.  Tasks/cards on a project board can be ba
 [Managing project boards](https://docs.github.com/en/free-pro-team@latest/github/managing-your-work-on-github/managing-project-boards) 
 for more information.
 
+* **Clearing Quill editor:** The initial state of the Quill editor is that it is empty and the placeholder text is displayed.  Ideally, after a user sends a message it would return to this state.  Instead, it contains multiple blank lines and does not display the placeholder text.
+
+* **Top bar is not pinned:** The top bar that is displayed at the top of the messages pane when a user is viewing a channel should remain visible while the user is scrolling through messages; only the messages and editor should scroll.  Currently, the top bar is in the same scrollable container as the messages and, thus, it scrolls out of view when a user scrolls through messages.
+
+* **App crashes if user presses Shift-Enter:** If the Quill editor has focus and the user presses Shift-Enter (as would typically be done in a chat client to insert a new line in the message that is being composed), the application crashes (immediately terminates with no error displayed on screen).
+
+* **Poor display of long team names:** When a team/account is selected in the accounts panel, the channels panel displays the name of the team/account along with all of the channels and direct messages for that team/account.  If the team name is too long to be fully displayed, the text wraps to a new line but the bounds of the rectangle where the team name is displayed are such that only the top few pixels of the second line are displayed.
+
+* **Channel users popup does not scroll:** When a user right-clicks a channel in the channels panel and selects **View Members**, a popup is displayed that lists all of the members in the channel.  However, the content of the popup is not scrollable with the result that not all members can be seen if there are more than what will fit in the popup.
+
+* **Channel users popup intermittently crashes:** When a user right-clicks a channel in the channels panel and selects **View Members**, a popup is displayed that lists all of the members in the channel. Frequently, that popup window will crash (disappear) with no apparent cause and 
+no error message displayed in the GUI or in the console.
+
 ## Slack
 
 * **Slack deprecated API methods:** Some API methods used by Lounge Lizard have been deprecated by Slack and will stop functioning in 
@@ -33,6 +46,10 @@ for more information.
 subsequently used when making Slack API calls.  Because the authentication method currently in use is undocumented, it is not known when or
 if it will ever stop working.  It may be preferable to switch to using documented methods to perform user authentication.
 
+* **GUI display of pinned items:** Currently, when a user clicks the "View pinned items" hyperlink, the raw JSON for the pinned items is displayed in the console.
+
+* **Error when attempting to Show Users for a Slack DM:** An error occurs if a user right-clicks a direct message/chat for a Slack account and 
+selects **Show Users**.  The users popup us not displayed.
 
 ## MS Teams
 
@@ -67,7 +84,9 @@ updated to work as expected with MS Teams.  Note, however, that @mentions are mu
 Slack, @mentions are sent as a simple string in the message text.  In teams, however, they consist of two parts:
    1. A special html-like <at> tag in the message body, and
    1. An object in the **mentions** collection of the message that contains information about the person, team, or channel being mentioned.
-It is also important to note that the message format must be html when using mentions but current application code is not specifying format.
+
+* **Custom emoji:** The application does not currently support custom emoji for Microsoft Teams and a mechanism has not been identified that 
+would be suitable for adding support for custom emoji.
 
 ## TODO
 
