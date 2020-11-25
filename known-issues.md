@@ -23,6 +23,16 @@ for more information.
 
 ## Slack
 
+* **Slack deprecated API methods:** Some API methods used by Lounge Lizard have been deprecated by Slack and will stop functioning in 
+February 2021.  Upon preliminary analysis, it appears that the impact may be somewhat limited in scope but it will be necessary to 
+update the affected code before February 2021 in order to ensure the continued operation of Lounge Lizard with Slack accounts.  See 
+[Deprecating early methods in favor of the Conversations API](https://api.slack.com/changelog/2020-01-deprecating-antecedents-to-the-conversations-api) 
+for more information.
+
+* **Slack authentication:** Lounge Lizard currently uses an undocumented API method to sign in a Slack user and obtain a token which can be
+subsequently used when making Slack API calls.  Because the authentication method currently in use is undocumented, it is not known when or
+if it will ever stop working.  It may be preferable to switch to using documented methods to perform user authentication.
+
 
 ## MS Teams
 
@@ -34,17 +44,35 @@ ID and redirect URI in [teams-api-helper.js](lib/service/teams/teams-api-helper.
 critical components of the application's authentication flow although redirect URI is not used except as part of the payload that is 
 sent to Microsoft when retrieving an access token for a user.
 
+* **Example events:** The TeamsAccount class registers listeners for two example events called TEST_EVENT and TEST_EVENT_WITH_PARAM
+though the TeamsApiHelper class does not currently contain any code that raises either of those events.  These events are intended to 
+illustrate the pattern that should be followed when actual events need to be added to the TeamsApiHelper class in response to updated
+data such as new messages or user status changes that has been received from the server.  These example events should be removed when 
+they are no longer useful.
+
+* **Mock "received" messages:** Currently, Lounge Lizard is not capable of detecting updated data such as new messages.  In order to 
+allow testing of application functionality related to the receipt of a new message when using a Microsoft Teams account, the TeamsApiHelper
+class periodically raises "new message" events for mock messages that have been generated. When the application has been updated to actually
+detect new messages coming from the server, this code should be removed.  Until that time, it is necessary to copy the file 
+**testdata.sample.json** to **testdata.json** and update the values in the file with actual values from your Microsoft Teams account.
+
+* **Team and user images:** The application currently does not retrieve and display team or user images for Microsoft Teams accounts.  The method
+of getting these images for MS Teams is quite different than it is for Slack and will require some fairly significant rearchitecting of the code
+that retrieves images from the internet.  The main challenge is that the code currently can only perform unauthenticated http GETs that are
+identical for any image.  For MS Teams, though, the application must perform an authenticated API call and will have specific paths for team
+images and individual profile images which must be handled.
+
+* **Sending @mentions:** The code that currently exists to send @mentions for MS Teams is based on Slack functionality.  This code needs to be 
+updated to work as expected with MS Teams.  Note, however, that @mentions are much more complicated with MS Teams than they are in Slack.  With 
+Slack, @mentions are sent as a simple string in the message text.  In teams, however, they consist of two parts:
+   1. A special html-like <at> tag in the message body, and
+   1. An object in the **mentions** collection of the message that contains information about the person, team, or channel being mentioned.
+It is also important to note that the message format must be html when using mentions but current application code is not specifying format.
+
 ## TODO
 
-
-
-
 - bugs
-- Slack functions being deprecated
-- Sample event code
-- Randomly generated "received" messages
-- Slack auth model deprecated
-[token]: https://api.slack.com/custom-integrations/legacy-tokens
+
 
 - Trello cards
 
