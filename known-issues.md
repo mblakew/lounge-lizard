@@ -95,3 +95,9 @@ would be suitable for adding support for custom emoji.
 
 - Trello cards
 
+**Performance** - especially N+1 issues
+**Encrypt Refresh Token**
+**Message deltas**
+
+
+
