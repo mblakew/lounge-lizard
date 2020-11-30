@@ -34,6 +34,16 @@ for more information.
 * **Channel users popup intermittently crashes:** When a user right-clicks a channel in the channels panel and selects **View Members**, a popup is displayed that lists all of the members in the channel. Frequently, that popup window will crash (disappear) with no apparent cause and 
 no error message displayed in the GUI or in the console.
 
+* **Encrypt tokens:** The user's Slack API tokens and Microsoft refresh tokens are stored in an application configuration file and can be 
+viewed by any user or process with access to the location on disk where the configuration file is stored.  These values should be encrypted 
+before they are written to the configuration file in order to decrease the possibility that they will be accessed and used improperly.
+
+* **Performance:** There are some parts of the application where poor performance adversely impacts the user experience.  This is most
+pronounced when initially viewing a channel in a Microsoft Teams account and that channel contains many messages.  In some cases, the 
+current application code suffers from N+1 problems while in other cases the application may be making synchronous API calls that should 
+instead be done asynchronously.  (Note that though the application uses libraries that make asynchronous API calls, the application uses 
+async/await to wait on the results of those API calls, thus effectively making them synchronous calls.)
+
 ## Slack
 
 * **Slack deprecated API methods:** Some API methods used by Lounge Lizard have been deprecated by Slack and will stop functioning in 
@@ -48,8 +58,13 @@ if it will ever stop working.  It may be preferable to switch to using documente
 
 * **GUI display of pinned items:** Currently, when a user clicks the "View pinned items" hyperlink, the raw JSON for the pinned items is displayed in the console.
 
-* **Error when attempting to Show Users for a Slack DM:** An error occurs if a user right-clicks a direct message/chat for a Slack account and 
-selects **Show Users**.  The users popup us not displayed.
+* **Users are not displayed for a multi-party Slack DM:** The application does not currently contain any code that will retrieve a list of
+users who are participating in a multi-party Slack direct message.  If a user right-clicks such Slack direct message that includes multiple
+participants and subsequently selects **Show Users**, an empty popup window is displayed.
+
+* **Update to latest Slack client:** Lounge Lizard currently uses an older, deprecated version of the Slack Node.js SDK (client).  The 
+application needs to be updated to use a recent, supported version of the client instead.  Note that this task may become moot once the 
+**Updates from Wey** task has been completed as the **feature/updates-from-wey** branch already uses a newer version of the Slack client.
 
 ## MS Teams
 
@@ -60,6 +75,9 @@ contributors should create a new, long-lived organization, create a new applicat
 ID and redirect URI in [teams-api-helper.js](lib/service/teams/teams-api-helper.js).  Note that both client ID and redirect URI are 
 critical components of the application's authentication flow although redirect URI is not used except as part of the payload that is 
 sent to Microsoft when retrieving an access token for a user.
+
+* **Server updates:** The application is not currently capable of detecting when updated data is available and retrieving updated data.
+See the [Teams](Teams.md) document for more information.
 
 * **Example events:** The TeamsAccount class registers listeners for two example events called TEST_EVENT and TEST_EVENT_WITH_PARAM
 though the TeamsApiHelper class does not currently contain any code that raises either of those events.  These events are intended to 
@@ -88,16 +106,5 @@ Slack, @mentions are sent as a simple string in the message text.  In teams, how
 * **Custom emoji:** The application does not currently support custom emoji for Microsoft Teams and a mechanism has not been identified that 
 would be suitable for adding support for custom emoji.
 
-## TODO
-
-- bugs
-
-
-- Trello cards
-
-**Performance** - especially N+1 issues
-**Encrypt Refresh Token**
-**Message deltas**
-
-
+* **Display profile not working for MS Teams:** When a user clicks the name of another user in a channel message, a popup window should be displayed containing profile information for the selected user.  This works fine for Slack accounts but is not currently working for MS Teams accounts.
 
