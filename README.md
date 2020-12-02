@@ -9,6 +9,17 @@ from the original source (2019 - 2020).
 __Do not use this for work, you might miss important messages due to bugs and
 missing features.__
 
+## Guide to additional documentation
+
+* **[Known Issues](known-issues.md):** Documents known issues that must or should be addressed as part of any future work on Lounge Lizard. 
+Some of the listed issues are bugs that have been identified while others are tasks that will need to be completed.
+
+* **[Supported Features](supported-features.md):** Lists various features of a chat application and whether each is supported by this 
+application and the chat services it supports.
+
+* **[Teams](Teams.md):** Contains important information about Microsoft Teams, the Microsoft Graph API which this application uses to interact
+with Microsoft Teams, and this application's support for Microsoft Teams.
+
 ## Screenshots
 
 |  macOS                                   |  Linux                                     |  Windows                                       |
@@ -30,13 +41,17 @@ Because only Node.js 10.x is supported when running the application from source 
 * Delete your current Node.js directory (usually located in C:\Program Files\nodejs), if one already exists.
 * Delete your current npm directory (usually located in C:\Users\<User>\AppData\Roaming\npm), if one already exists.
 * Use a Node.js version manager. Node Version Manager for Windows is recommended. 
-* Go to https://github.com/coreybutler/nvm-windows/releases and download nvm-setup.zip
+* Go to https://github.com/coreybutler/nvm-windows/releases and download **nvm-setup.zip**.
 * Unzip the file and run it.
 * Open Windows PowerShell with administrative privileges.
-* Run "nvm install 10.9.0"
-* Run "nvm use 10.9.0"
-* Now, in a terminal, go to the local repository and run "npm install" and "npm run-script build"
-* Finally, to run the executable application, run "npm run start"
+* Run `nvm install 10.9.0`
+* Run `nvm use 10.9.0`
+* Now, in a terminal, go to the local repository and run `npm install` and `npm run-script build`
+* Finally, to run the executable application, run `npm run start`
+
+**Important note:** It is possible to run the application in either of two ways: using the executable file that was built above or using
+`npm run start`.  When frequent code changes are being made, the latter is highly recommended as the application startup time using 
+`npm run start` tends to be much shorter than the time to build the application executable file.
 
 ## Technical stack
 
