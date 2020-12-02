@@ -106,6 +106,19 @@ snippet is just an unnamed file that is downloaded by Lounge Lizard the same as 
 With Teams and the Graph API, a code snippet is also included in a message's attachments collection but it is a link to 
 another API call that must be made to retrieve the contents.
 
+* **Formatting in messages:** MS Teams and the Graph API support formatting in messages using html.  Currently, Loung Lizard uses a 
+rich text editor to compose messages but converts formatting into markdown when sending.  The application needs to be updated to 
+convert the markdown to html.  This may be relatively straightforward as the underlying issue appears to be that when the rich text 
+editor was implemented, the UI code was made responsible for converting the editor's html to markdown and this conversion simply needs
+to be pushed down to a Slack-specific class.
+
+* **Mentions:** The mechanism employed by MS Teams and the Graph API for sending mentions in a message is considerably more complex 
+than the mechanism employed by Slack.  In Slack, mentions are sent as specially-formatted text embedded in the message itself.  In 
+MS Teams, on the other hand, there are two components to sending mentions.  The first is a special html-like tag in the message body.  
+The second component is an object that is added to the message's mentions collection which contains information about the person, 
+team, or channel being mentioned.  The best way to see how the message must be formatted is to send one or more messages using the 
+MS Teams web or desktop app, use Postman to invoke the Graph API to get the message that was sent, and inspect the response.
+
 * **Team icon:** It is possible to get use the Graph API to get a photo/icon for a team but Microsoft's model for doing this is 
 quite different than Slack's model.  With Slack, the team's icon is openly available via unauthenticated http GET.  As a result, 
 the Lounge Lizard code that retrieves the icon is embedded in the UI code and is unaware of the chat service classes.  With the 
@@ -114,6 +127,9 @@ a team, invoke https://graph.microsoft.com/v1.0/groups/{teamId}/photos/120x120/$
 for an account is essentially the same as the image that is returned from the Graph API for a team that does not have a photo set.
 
 * **User avatars:** See **Team icon** above.  An example of a URL for the 120x120 photo for a user is https://graph.microsoft.com/v1.0/users/{{UserId}}/photos/120x120/$value.
+
+* **Getting presence/status of other users:** There is support for getting another user's presence/status via the Graph API but 
+Lounge Lizard particularly needs to be able to receive updates (a mechanism for receiving updates has not yet been identified; see more below).  See https://docs.microsoft.com/en-us/graph/api/presence-get?view=graph-rest-beta&tabs=http for more information.
 
 ## Receiving new messages in the MS Teams web application
 
@@ -139,5 +155,5 @@ obtain a Skype token but the exact mechanism for doing this has not been identif
    - https://github.com/msndevs/protocol-docs/wiki/Authentication
 3. The format of the API responses is not documented and does not appear to be the same as responses from MS Graph API methods that return chat messages.
 4. There is a possibility of breaking changes in the API at any time.  Because it is not a documented public API such changes would probably not be publicized.  However, if the MS Teams desktop application relies on the same back-end APIs as the web application the possibility of breaking changes should be minimal.
-5. There may be other related API calls that must also be made to set or get important information.  For example, browser developer tools show regular calls made to API methods called **getpresence** and **reportmyactivity**.  Presumably, these methods are used to report the current user's status (i.e. available, busy, away, etc.) and get the status of other users.
+5. There may be other related API calls that must also be made to set or get important information.  For example, browser developer tools show regular calls made to API methods called **getpresence** and **reportmyactivity**.  Presumably, these methods are used to report the current user's status (i.e. available, busy, away, etc.) and get the status of other users.  See the SlackAccount class for a complete list of events for which the Slack client can received updates from the server.
 
