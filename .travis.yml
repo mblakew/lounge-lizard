@@ -34,7 +34,7 @@ deploy:
   overwrite: true
   draft: true
   tag_name: ${VERSION}
-  name: Wey ${VERSION}
+  name: LoungeLizard ${VERSION}
   body: (placeholder)
   on:
     tags: true

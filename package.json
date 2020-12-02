@@ -1,16 +1,16 @@
 {
-  "name": "wey",
-  "version": "0.3.5",
+  "name": "lounge-lizard",
+  "version": "0.4.0",
   "main": "lib/main.js",
-  "description": "Fast open source Slack desktop app",
+  "description": "Fast open source multi-service desktop chat application",
   "build": {
-    "appId": "org.yue.wey",
-    "productName": "Wey",
-    "copyright": "Copyright © 2018 Cheng Zhao",
+    "appId": "org.cacti-council.lounge-lizard",
+    "productName": "Lounge Lizard",
+    "copyright": "Copyright © 2018 Cheng Zhao, Copyright © 2019-2020 Cacti Council",
     "unpack": "+(*.node|*.html|*.png|*.gif)"
   },
   "bin": {
-    "wey": "./scripts/start.js"
+    "lounge-lizard": "./scripts/start.js"
   },
   "scripts": {
     "start": "node scripts/start.js",
@@ -23,13 +23,13 @@
     "yode": "0.4.2"
   },
   "license": "GPL-3.0",
-  "homepage": "https://github.com/yue/wey",
+  "homepage": "https://github.com/cacticouncil/lounge-lizard",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yue/wey.git"
+    "url": "https://github.com/cacticouncil/lounge-lizard.git"
   },
   "bugs": {
-    "url": "https://github.com/yue/wey/issues"
+    "url": "https://github.com/cacticouncil/lounge-lizard/issues"
   },
   "dependencies": {
     "@slack/client": "4.8.0",

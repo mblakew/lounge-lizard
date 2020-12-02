@@ -19,7 +19,7 @@ artifacts:
 
 deploy:
   - provider: GitHub
-    release: Wey $(APPVEYOR_REPO_TAG_NAME)
+    release: LoungeLizard $(APPVEYOR_REPO_TAG_NAME)
     tag: $(APPVEYOR_REPO_TAG_NAME)
     description: '(placeholder)'
     auth_token:
