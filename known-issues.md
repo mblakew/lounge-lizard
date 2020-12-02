@@ -21,6 +21,10 @@ project and be used for task tracking.  Tasks/cards on a project board can be ba
 [Managing project boards](https://docs.github.com/en/free-pro-team@latest/github/managing-your-work-on-github/managing-project-boards) 
 for more information.
 
+* **Current view not refreshed when a new message arrives:** If a new message arrives while a user is viewing a particular channel, 
+the system notification for the new message is displayed but the contents (i.e. message list) that is displayed is not refreshed to 
+include the new message.  An easy way to observe this issue is to use the application to send direct messages to yourself.
+
 * **Clearing Quill editor:** The initial state of the Quill editor is that it is empty and the placeholder text is displayed.  Ideally, after a user sends a message it would return to this state.  Instead, it contains multiple blank lines and does not display the placeholder text.
 
 * **Top bar is not pinned:** The top bar that is displayed at the top of the messages pane when a user is viewing a channel should remain visible while the user is scrolling through messages; only the messages and editor should scroll.  Currently, the top bar is in the same scrollable container as the messages and, thus, it scrolls out of view when a user scrolls through messages.
