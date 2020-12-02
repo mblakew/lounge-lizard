@@ -52,9 +52,11 @@ update the affected code before February 2021 in order to ensure the continued o
 [Deprecating early methods in favor of the Conversations API](https://api.slack.com/changelog/2020-01-deprecating-antecedents-to-the-conversations-api) 
 for more information.
 
-* **Slack authentication:** Lounge Lizard currently uses an undocumented API method to sign in a Slack user and obtain a token which can be
+* **Slack authentication:** Lounge Lizard currently uses an undocumented legacy API method to sign in a Slack user and obtain a token which can be
 subsequently used when making Slack API calls.  Because the authentication method currently in use is undocumented, it is not known when or
-if it will ever stop working.  It may be preferable to switch to using documented methods to perform user authentication.
+if it will ever stop working.  It may be preferable to switch to using documented methods to perform user authentication. See more at:
+   * https://api.slack.com/changelog/2016-05-19-authorship-changing-for-older-tokens
+   * https://blacksunhackers.club/2019/03/acquiring-and-abusing-legacy-slack-tokens/
 
 * **GUI display of pinned items:** Currently, when a user clicks the "View pinned items" hyperlink, the raw JSON for the pinned items is displayed in the console.
 
