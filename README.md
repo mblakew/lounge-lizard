@@ -3,26 +3,26 @@
 Fast open source desktop chat application, written in Node.js with native UI powered
 by [the Yue library](https://github.com/yue/yue).
 
-**Important Note:** Lounge Lizard is based on Wey (https://github.com/yue/wey) and has been modified 
+**Important Note:** Lounge Lizard is based on Wey (https://github.com/yue/wey) and has been modified
 from the original source (2019 - 2020).
 
-__Do not use this for work, you might miss important messages due to bugs and
-missing features.__
+**Do not use this for work, you might miss important messages due to bugs and
+missing features.**
 
 ## Guide to additional documentation
 
-* **[Known Issues](known-issues.md):** Documents known issues that must or should be addressed as part of any future work on Lounge Lizard. 
-Some of the listed issues are bugs that have been identified while others are tasks that will need to be completed.
+* **[Known Issues](known-issues.md):** Documents known issues that must or should be addressed as part of any future work on Lounge Lizard.
+  Some of the listed issues are bugs that have been identified while others are tasks that will need to be completed.
 
-* **[Supported Features](supported-features.md):** Lists various features of a chat application and whether each is supported by this 
-application and the chat services it supports.
+* **[Supported Features](supported-features.md):** Lists various features of a chat application and whether each is supported by this
+  application and the chat services it supports.
 
-* **[Teams](Teams.md):** Contains important information about Microsoft Teams, the Microsoft Graph API which this application uses to interact
-with Microsoft Teams, and this application's support for Microsoft Teams.
+ **[Teams](Teams.md):** Contains important information about Microsoft Teams, the Microsoft Graph API which this application uses to interact
+  with Microsoft Teams, and this application's support for Microsoft Teams.
 
 ## Screenshots
 
-|  macOS                                   |  Linux                                     |  Windows                                       |
+| macOS                                    | Linux                                      | Windows                                        |
 | ---------------------------------------- | ------------------------------------------ | ---------------------------------------------- |
 | ![macOS screenshot](docs/mac-screen.png) | ![Linux screenshot][docs/linux-screen.png] | ![Windows screenshot][docs/windows-screen.png] |
 
@@ -40,7 +40,7 @@ Because only Node.js 10.x is supported when running the application from source 
 
 * Delete your current Node.js directory (usually located in C:\Program Files\nodejs), if one already exists.
 * Delete your current npm directory (usually located in C:\Users\<User>\AppData\Roaming\npm), if one already exists.
-* Use a Node.js version manager. Node Version Manager for Windows is recommended. 
+* Use a Node.js version manager. Node Version Manager for Windows is recommended.
 * Go to https://github.com/coreybutler/nvm-windows/releases and download **nvm-setup.zip**.
 * Unzip the file and run it.
 * Open Windows PowerShell with administrative privileges.
@@ -50,8 +50,18 @@ Because only Node.js 10.x is supported when running the application from source 
 * Finally, to run the executable application, run `npm run start`
 
 **Important note:** It is possible to run the application in either of two ways: using the executable file that was built above or using
-`npm run start`.  When frequent code changes are being made, the latter is highly recommended as the application startup time using 
+`npm run start`. When frequent code changes are being made, the latter is highly recommended as the application startup time using
 `npm run start` tends to be much shorter than the time to build the application executable file.
+
+### Running application from source on MacOS
+
+* Deleting your current Node.js and npm directories are optional on MacOS, but if you would like to do this before installing NVM they are usually located in /usr/local/bin/node and /usr/local/bin/npm.
+* Use a Node.js version manager. Node Version Manager is recommended.
+* Go to the [NVM github](https://github.com/nvm-sh/nvm). Under the "Install and Update Script" section there are options to either download and run the installation script, or run one of the provided cURL/Wget commands.
+* After installing NVM, restart your terminal session and run `nvm install 10.9.0`
+* Verify that you are using the correct node version by running `which node`. You should see something like **Users/{User}/.nvm/versions/node/v10.9.0/bin/node**
+* In your terminal, go to the local repository and run `npm install`, followed by `npm run-script build` and wait for it to finish.
+* Finally, run `npm run start` to run the executable application.
 
 ## Technical stack
 
@@ -100,7 +110,7 @@ and without tons of dependencies.
 
 ### Hide details of chat service providers
 
-Lounge Lizard currently supports Slack and Microsoft Teams.  In the future, it could
+Lounge Lizard currently supports Slack and Microsoft Teams. In the future, it could
 support more services or could support plugins to add arbitrary services.
 
 To achieve this we must ensure the views and controllers must only operate on
