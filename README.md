@@ -17,14 +17,14 @@ missing features.**
 * **[Supported Features](supported-features.md):** Lists various features of a chat application and whether each is supported by this
   application and the chat services it supports.
 
- **[Teams](Teams.md):** Contains important information about Microsoft Teams, the Microsoft Graph API which this application uses to interact
+* **[Teams](Teams.md):** Contains important information about Microsoft Teams, the Microsoft Graph API which this application uses to interact
   with Microsoft Teams, and this application's support for Microsoft Teams.
 
 ## Screenshots
 
 | macOS                                    | Linux                                      | Windows                                        |
 | ---------------------------------------- | ------------------------------------------ | ---------------------------------------------- |
-| ![macOS screenshot](docs/mac-screen.png) | ![Linux screenshot][docs/linux-screen.png] | ![Windows screenshot][docs/windows-screen.png] |
+| ![macOS screenshot](docs/mac-screen.png) | ![Linux screenshot](docs/linux-screen.png) | ![Windows screenshot](docs/windows-screen.png) |
 
 ## Releases
 
