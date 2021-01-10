@@ -25,26 +25,30 @@
   <div class="content">
     <div class="action-menu">
       {{~#canStartThread messageList message~}}
-      <a href="#" onclick="wey.openThread('{{message.id}}'); return false" title="Start thread"><i class="icon-comment"></i></a>
+      <a href="#" onclick="ll.openThread('{{message.id}}'); return false" title="Start thread"><i class="icon-comment"></i></a>
       {{~/canStartThread~}}
 
-      <a class="toggle-star" href="#" onclick="wey.setMessageStar('{{message.id}}', {{message.timestamp}}, {{revert message.hasStar}}); return false" title="Star message"><i class="{{#if message.hasStar}}icon-star{{else}}icon-star-empty{{/if}}"></i></a>
+      {{#if messageList.account.canSaveMessages}}
+      <a class="toggle-star" href="#" onclick="ll.setMessageStar('{{message.id}}', {{message.timestamp}}, {{revert message.hasStar}}); return false" title="Star message"><i class="{{#if message.hasStar}}icon-star{{else}}icon-star-empty{{/if}}"></i></a>
+      {{/if}}
 
       <!--Pinning button-->
-      <a href="#" onclick="wey.pinMessage('{{message.id}}', {{message.timestamp}}, {{revert message.isPinned}}); return false" title="Pin message"><i class="{{#if message.isPinned}}icon-smile{{else}}icon-ellipsis{{/if}}"></i></a>
+      {{#if messageList.account.canPinMessages}}
+      <a href="#" onclick="ll.pinMessage('{{message.id}}', {{message.timestamp}}, {{revert message.isPinned}}); return false" title="Pin message"><i class="{{#if message.isPinned}}icon-smile{{else}}icon-ellipsis{{/if}}"></i></a>
+      {{/if}}
 
       <!--Used to demonstrate pinned messages-->
       <!--
-        <a href="#" onclick="wey.viewPinned('{{message.id}}'); return false" title="List pinned messages"><i class="icon-ellipsis"></i></a>
+        <a href="#" onclick="ll.viewPinned('{{message.id}}'); return false" title="List pinned messages"><i class="icon-ellipsis"></i></a>
       -->
 
-
-      <a href="#" class="react-picker" onclick="wey.openReactions('{{message.id}}', {{message.timestamp}}); return false"><i class="icon-smile" id="react-button-icon"></i></a>
-      <a class="toggle-star" href="#" onclick="wey.setMessageStar('{{message.id}}', {{message.timestamp}}, {{revert message.hasStar}}); return false" title="Star message"><i class="{{#if message.hasStar}}icon-star{{else}}icon-star-empty{{/if}}"></i></a>
+      {{#if messageList.account.canReactToMessages}}
+      <a href="#" class="react-picker" onclick="ll.openReactions('{{message.id}}', {{message.timestamp}}); return false"><i class="icon-smile" id="react-button-icon"></i></a>
+      {{/if}}
     </div>
     {{#unless message.isFolded}}
     <div class="sender">
-      <div class="name" onclick="wey.getProfile('{{message.id}}', {{message.timestamp}}); return false" class="profile">{{message.user.name}}</div>
+      <div class="name" onclick="ll.getProfile('{{message.id}}', {{message.timestamp}}); return false" class="profile">{{message.user.name}}</div>
       {{#if message.user.statusEmoji}}
         {{{message.user.statusEmoji}}}
       {{/if}}
@@ -93,7 +97,7 @@
       <img {{#if isImageCached}}src="{{image}}"{{else}}class="delayed-image" data-url="{{image}}"{{/if}} width="{{imageWidth}}" height="{{imageHeight}}"/>
     </div>
     {{else}}
-    <div onclick="wey.openLink('{{downloadUrl}}'); return false" class="file">
+    <div onclick="ll.openLink('{{downloadUrl}}'); return false" class="file">
       <div class="icon"><i class="icon-doc"></i></div>
       <div class="name">{{name}}</div>
       <div class="type">{{readableSize}} {{typeName}}</div>
@@ -103,12 +107,16 @@
     {{#if message.reactions}}
     <div class="reactions">
     {{#each message.reactions}}
-    <button onclick="wey.setMessageReaction('{{../message.id}}', {{../message.timestamp}}, '{{name}}', {{revert reacted}}); return false" {{#if reacted}}class="reacted"{{/if}}>{{{content}}}<span class="count">{{count}}</span></button>
+    {{#if messageList.account.canReactToMessages}}
+    <button onclick="ll.setMessageReaction('{{../message.id}}', {{../message.timestamp}}, '{{name}}', {{revert reacted}}); return false" {{#if reacted}}class="reacted"{{/if}}>{{{content}}}<span class="count">{{count}}</span></button>
+    {{else}}
+    <span>{{{content}}}</span><span class="count">{{count}}</span>
+    {{/if}}
     {{/each}}
     </div>
     {{/if}}
     {{#isChannel messageList}}{{#if message.isThreadParent}}
-    <div onclick="wey.openThread('{{message.id}}'); return false" class="replies-wrapper"><div class="replies">
+    <div onclick="ll.openThread('{{message.id}}'); return false" class="replies-wrapper"><div class="replies">
       {{#each message.replyUsers}}
       <img width="24" height="24" src="{{avatar}}"/>
       {{/each}}
